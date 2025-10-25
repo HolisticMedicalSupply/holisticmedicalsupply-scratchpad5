@@ -135,13 +135,15 @@
                     </tr>
                     <tr>
                         <td><strong>8. Specialty Divisions</strong></td>
-                        <td>$400K-$800K</td>
-                        <td>$200K-$400K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$600K-$1.2M</td>
+                        <td>$500K-$1.0M</td>
+                        <td>$250K-$500K</td>
+                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$750K-$1.5M</td>
                         <td>
                             <span class="product-tag">Pediatric</span>
+                            <span class="product-tag">Veteran</span>
+                            <span class="product-tag">Cancer</span>
                             <span class="product-tag">Bariatric</span>
-                            <span class="product-tag">Specialized</span>
+                            <span class="product-tag">Pet Medical</span>
                         </td>
                     </tr>
                     <tr>
@@ -176,9 +178,9 @@
                     </tr>
                     <tr class="total-row">
                         <td>TOTAL IF ALL STRATEGIES LAUNCHED</td>
-                        <td>$4.03M-$8.55M</td>
-                        <td>$1.94M-$4.15M</td>
-                        <td style="color: #d35400; font-size: 1.4em;">$5.97M-$12.7M</td>
+                        <td>$4.13M-$8.75M</td>
+                        <td>$1.99M-$4.25M</td>
+                        <td style="color: #d35400; font-size: 1.4em;">$6.12M-$13.0M</td>
                         <td>Full Portfolio</td>
                     </tr>
                 </tbody>
