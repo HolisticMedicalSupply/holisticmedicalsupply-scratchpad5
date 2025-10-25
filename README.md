@@ -3,293 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPDATED: Complete Strategy Revenue Summary with 36 BOC Codes</title>
+    <title>Revenue Projections Summary</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea, #764ba2); padding: 20px; }
         .container { max-width: 1600px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .header { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 60px 40px; text-align: center; }
-        .header h1 { font-size: 3.5em; margin-bottom: 20px; }
-        .warning-banner { background: #f39c12; color: white; padding: 30px 40px; text-align: center; font-size: 1.3em; font-weight: bold; }
+        .language-toggle { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.98); padding: 15px 40px; display: flex; justify-content: center; gap: 15px; border-bottom: 3px solid #667eea; box-shadow: 0 3px 15px rgba(0,0,0,0.1); }
+        .lang-btn { padding: 12px 30px; border: 2px solid #667eea; background: white; color: #667eea; border-radius: 8px; cursor: pointer; font-size: 1.1em; font-weight: bold; transition: all 0.3s ease; }
+        .lang-btn:hover { background: #f0f0ff; transform: translateY(-2px); }
+        .lang-btn.active { background: #667eea; color: white; }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+        .header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 60px 40px; text-align: center; }
+        .header h1 { font-size: 4em; margin-bottom: 20px; }
         .section { padding: 50px 40px; }
         .section:nth-child(even) { background: #f8f9fa; }
-        .section-title { font-size: 2.5em; color: #1e3c72; margin-bottom: 30px; text-align: center; border-bottom: 4px solid #667eea; padding-bottom: 15px; }
-        table { width: 100%; border-collapse: collapse; margin: 30px 0; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1); }
-        th { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 20px; text-align: left; font-size: 1.1em; }
-        td { padding: 18px; border-bottom: 1px solid #e9ecef; }
-        tr:hover { background: #f8f9fa; }
-        .total-row { background: #fff3cd !important; font-weight: bold; font-size: 1.2em; }
-        .revenue-box { background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 40px; border-radius: 15px; margin: 30px 0; text-align: center; }
-        .revenue-amount { font-size: 4em; font-weight: bold; display: block; margin: 20px 0; }
-        .highlight { background: #fff3cd; padding: 30px; border-left: 6px solid #f39c12; border-radius: 8px; margin: 25px 0; }
-        .boc-product-list { background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0; }
-        .product-tag { display: inline-block; background: #667eea; color: white; padding: 8px 15px; border-radius: 20px; margin: 5px; font-size: 0.9em; }
+        .revenue-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+        .revenue-table th { background: #667eea; color: white; padding: 15px; text-align: left; }
+        .revenue-table td { padding: 15px; border-bottom: 1px solid #ddd; }
+        .revenue-table tr:hover { background: #f0f0ff; }
+        .total-row { background: #27ae60 !important; color: white; font-weight: bold; font-size: 1.3em; }
+        .back-link { display: inline-block; background: #3498db; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin: 20px 0; font-weight: bold; }
+        .back-link:hover { background: #2980b9; }
+        .highlight-box { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 40px; border-radius: 15px; margin: 30px 0; text-align: center; }
+        .highlight-box h2 { font-size: 3em; margin-bottom: 15px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>📊 UPDATED REVENUE PROJECTIONS</h1>
-            <p style="font-size: 1.5em;">Complete Strategy Portfolio with 36 BOC-Licensed DME Products</p>
+        <div class="language-toggle">
+            <button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">🇺🇸 English</button>
+            <button class="lang-btn" onclick="switchLanguage('ru')" data-lang="ru">🇷🇺 Русский</button>
+            <button class="lang-btn" onclick="switchLanguage('uz')" data-lang="uz">🇺🇿 O'zbek</button>
         </div>
 
-        <div class="warning-banner">
-            ⚠️ CRITICAL UPDATE: Previous numbers showed ONLY complementary products. This shows the COMPLETE picture including your core BOC-licensed DME equipment (wheelchairs, beds, braces, etc.) which generates 70-80% of revenue!
-        </div>
+        <!-- ENGLISH -->
+        <div class="lang-content active" id="content-en">
+            <div class="header">
+                <h1>📊 REVENUE PROJECTIONS</h1>
+                <p style="font-size: 1.8em;">Complete Financial Summary - All 11 Strategies</p>
+            </div>
 
-        <div class="section">
-            <h2 class="section-title">💰 Complete Revenue Breakdown by Strategy</h2>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Strategy</th>
-                        <th>Licensed DME<br/>(70-80%)</th>
-                        <th>Complementary<br/>(20-30%)</th>
-                        <th>TOTAL<br/>Year 1</th>
-                        <th>Key DME Products</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>1. Emergency Hospital Delivery</strong></td>
-                        <td>$400K-$1.2M</td>
-                        <td>$160K-$400K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$560K-$1.6M</td>
-                        <td>
-                            <span class="product-tag">Wheelchairs</span>
-                            <span class="product-tag">Hospital Beds</span>
-                            <span class="product-tag">Patient Lifts</span>
-                            <span class="product-tag">Walkers</span>
-                            <span class="product-tag">Commodes</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>2. Golf Course Programs</strong></td>
-                        <td>$180K-$450K</td>
-                        <td>$100K-$250K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$280K-$700K</td>
-                        <td>
-                            <span class="product-tag">Orthotic Braces</span>
-                            <span class="product-tag">Compression Stockings</span>
-                            <span class="product-tag">Diabetic Shoes</span>
-                            <span class="product-tag">Canes</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>3. Resilient Medical Supply</strong></td>
-                        <td>$300K-$600K</td>
-                        <td>$200K-$400K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$500K-$1.0M</td>
-                        <td>
-                            <span class="product-tag">Emergency Equipment</span>
-                            <span class="product-tag">Wound VAC</span>
-                            <span class="product-tag">Oxygen</span>
-                            <span class="product-tag">Suction Pumps</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>4. Equipment Rental Programs</strong></td>
-                        <td>$500K-$900K</td>
-                        <td>$100K-$200K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$600K-$1.1M</td>
-                        <td>
-                            <span class="product-tag">Power Wheelchairs</span>
-                            <span class="product-tag">Hospital Beds</span>
-                            <span class="product-tag">Oxygen</span>
-                            <span class="product-tag">Patient Lifts</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>5. Facility Storage Cabinets</strong></td>
-                        <td>$300K-$700K</td>
-                        <td>$150K-$350K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$450K-$1.05M</td>
-                        <td>
-                            <span class="product-tag">All Categories</span>
-                            <span class="product-tag">Facility Stocking</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>6. Telehealth E-Commerce</strong></td>
-                        <td>$600K-$1.2M</td>
-                        <td>$300K-$600K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$900K-$1.8M</td>
-                        <td>
-                            <span class="product-tag">All Mobility</span>
-                            <span class="product-tag">Orthotics</span>
-                            <span class="product-tag">Respiratory</span>
-                            <span class="product-tag">Diabetic</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>7. Pharmacy Partnerships</strong></td>
-                        <td>$200K-$500K</td>
-                        <td>$80K-$200K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$280K-$700K</td>
-                        <td>
-                            <span class="product-tag">Mobility Aids</span>
-                            <span class="product-tag">Braces</span>
-                            <span class="product-tag">Compression</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>8. Specialty Divisions</strong></td>
-                        <td>$500K-$1.0M</td>
-                        <td>$250K-$500K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$750K-$1.5M</td>
-                        <td>
-                            <span class="product-tag">Pediatric</span>
-                            <span class="product-tag">Veteran</span>
-                            <span class="product-tag">Cancer</span>
-                            <span class="product-tag">Bariatric</span>
-                            <span class="product-tag">Pet Medical</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>9. Home Modification</strong></td>
-                        <td>$150K-$300K</td>
-                        <td>$100K-$250K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$250K-$550K</td>
-                        <td>
-                            <span class="product-tag">Installation</span>
-                            <span class="product-tag">Equipment Sales</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>10. Virtual Care Services</strong></td>
-                        <td>$200K-$400K</td>
-                        <td>$150K-$300K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$350K-$700K</td>
-                        <td>
-                            <span class="product-tag">Remote Monitoring</span>
-                            <span class="product-tag">Consultations</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>11. General Product Lines</strong></td>
-                        <td>$800K-$1.5M</td>
-                        <td>$400K-$800K</td>
-                        <td style="color: #27ae60; font-weight: bold; font-size: 1.2em;">$1.2M-$2.3M</td>
-                        <td>
-                            <span class="product-tag">All BOC Categories</span>
-                            <span class="product-tag">Base Inventory</span>
-                        </td>
-                    </tr>
-                    <tr class="total-row">
-                        <td>TOTAL IF ALL STRATEGIES LAUNCHED</td>
-                        <td>$4.13M-$8.75M</td>
-                        <td>$1.99M-$4.25M</td>
-                        <td style="color: #d35400; font-size: 1.4em;">$6.12M-$13.0M</td>
-                        <td>Full Portfolio</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="section">
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Back to Portfolio</a>
 
-            <div class="highlight">
-                <h3 style="color: #d35400; font-size: 1.8em; margin-bottom: 20px;">💡 Realistic Year 1 Expectations</h3>
-                <p style="font-size: 1.2em; line-height: 1.8; margin-bottom: 20px;">
-                    You won't launch all 11 strategies simultaneously. Most DME companies focus on 3-5 core strategies in Year 1:
-                </p>
-                
-                <h4 style="margin-top: 30px; font-size: 1.4em; color: #1e3c72;">Recommended Year 1 Focus (4 Strategies):</h4>
-                <div style="margin: 20px 0; font-size: 1.15em;">
-                    <p><strong>1. General Product Lines (Foundation):</strong> $1.2M-$2.3M</p>
-                    <p style="margin-left: 20px; color: #666;">Your bread and butter - all BOC categories, walk-in customers, referrals</p>
-                    
-                    <p style="margin-top: 15px;"><strong>2. Emergency Hospital Delivery:</strong> $560K-$1.6M</p>
-                    <p style="margin-left: 20px; color: #666;">High priority, fast ROI, builds hospital relationships</p>
-                    
-                    <p style="margin-top: 15px;"><strong>3. Equipment Rental Programs:</strong> $600K-$1.1M</p>
-                    <p style="margin-left: 20px; color: #666;">Recurring monthly revenue, insurance-reimbursed</p>
-                    
-                    <p style="margin-top: 15px;"><strong>4. Telehealth E-Commerce:</strong> $450K-$900K</p>
-                    <p style="margin-left: 20px; color: #666;">Scales without overhead, national reach</p>
+                <div class="highlight-box">
+                    <h2>$2.8M - $5.9M</h2>
+                    <p style="font-size: 1.5em;">Year 1 Conservative Target (4 Core Strategies)</p>
                 </div>
-            </div>
 
-            <div class="revenue-box">
-                <h3 style="font-size: 2em; margin-bottom: 15px;">Realistic Year 1 Total Revenue</h3>
-                <span class="revenue-amount">$2.8M - $5.9M</span>
-                <p style="font-size: 1.3em;">Conservative estimate focusing on 4 core strategies</p>
-                <p style="font-size: 1.1em; margin-top: 15px; opacity: 0.9;">Licensed DME Equipment: $2.0M-$4.3M (72%)</p>
-                <p style="font-size: 1.1em; opacity: 0.9;">Complementary Products: $0.8M-$1.6M (28%)</p>
+                <h2 style="font-size: 2.5em; margin: 40px 0 30px 0; text-align: center; color: #1e3c72;">Year 1 Revenue by Strategy</h2>
+
+                <table class="revenue-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">#</th>
+                            <th style="width: 45%;">Strategy</th>
+                            <th style="width: 22.5%;">Low Estimate</th>
+                            <th style="width: 22.5%;">High Estimate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Emergency Hospital Delivery</strong></td>
+                            <td>$560,000</td>
+                            <td>$1,600,000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Golf Course Programs</strong></td>
+                            <td>$280,000</td>
+                            <td>$700,000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Resilient Medical Supply</strong></td>
+                            <td>$500,000</td>
+                            <td>$1,000,000</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Equipment Rental Programs</strong></td>
+                            <td>$600,000</td>
+                            <td>$1,100,000</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Facility Storage Cabinets</strong></td>
+                            <td>$450,000</td>
+                            <td>$1,050,000</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Telehealth E-Commerce</strong></td>
+                            <td>$900,000</td>
+                            <td>$1,800,000</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Pharmacy Partnerships</strong></td>
+                            <td>$280,000</td>
+                            <td>$700,000</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><strong>Specialty Divisions</strong></td>
+                            <td>$750,000</td>
+                            <td>$1,500,000</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td><strong>Home Modification Services</strong></td>
+                            <td>$250,000</td>
+                            <td>$550,000</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><strong>Virtual Care Services</strong></td>
+                            <td>$350,000</td>
+                            <td>$700,000</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><strong>General Product Lines</strong></td>
+                            <td>$1,200,000</td>
+                            <td>$2,300,000</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>TOTAL (All 11 Strategies)</strong></td>
+                            <td><strong>$6.1M</strong></td>
+                            <td><strong>$13.0M</strong></td>
+                        </tr>
+                        <tr style="background: #3498db; color: white; font-weight: bold;">
+                            <td colspan="2"><strong>REALISTIC TARGET (4 Core Strategies: 1,4,6,11)</strong></td>
+                            <td><strong>$2.8M</strong></td>
+                            <td><strong>$5.9M</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="background: #fff3cd; border-left: 5px solid #ffc107; padding: 30px; margin: 40px 0; border-radius: 8px;">
+                    <h3 style="color: #856404; margin-bottom: 15px; font-size: 1.8em;">📌 Conservative Year 1 Approach</h3>
+                    <p style="color: #856404; font-size: 1.2em; line-height: 1.8;">Focus on 4 core strategies in Year 1: Emergency Hospital Delivery (#1), Equipment Rental (#4), Telehealth E-Commerce (#6), and General Product Lines (#11). These provide the foundation with minimal overlap and maximum revenue potential ($2.8M - $5.9M).</p>
+                </div>
+
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Back to Portfolio</a>
             </div>
         </div>
 
-        <div class="section">
-            <h2 class="section-title">🏥 Top Revenue-Generating DME Products</h2>
-            
-            <div class="boc-product-list">
-                <h3 style="margin-bottom: 20px; color: #1e3c72;">Your Highest-Value BOC Categories:</h3>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px;">
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #3498db;">
-                        <h4 style="color: #3498db; font-size: 1.3em; margin-bottom: 10px;">M06/M06A: Wheelchairs</h4>
-                        <p><strong>Price Range:</strong> $250-$30,000</p>
-                        <p><strong>Volume:</strong> Highest demand item</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $300K-$800K</p>
-                    </div>
+        <!-- RUSSIAN -->
+        <div class="lang-content" id="content-ru">
+            <div class="header">
+                <h1>📊 ПРОГНОЗЫ ДОХОДОВ</h1>
+                <p style="font-size: 1.8em;">Полная Финансовая Сводка - Все 11 Стратегий</p>
+            </div>
 
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #e74c3c;">
-                        <h4 style="color: #e74c3c; font-size: 1.3em; margin-bottom: 10px;">DM11: Hospital Beds</h4>
-                        <p><strong>Price Range:</strong> $800-$4,000 purchase | $150-$400/mo rental</p>
-                        <p><strong>Volume:</strong> 20-40% of discharges</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $200K-$600K</p>
-                    </div>
+            <div class="section">
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Назад</a>
 
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #9b59b6;">
-                        <h4 style="color: #9b59b6; font-size: 1.3em; margin-bottom: 10px;">OR03/OR04: Orthotic Braces</h4>
-                        <p><strong>Price Range:</strong> $150-$3,500</p>
-                        <p><strong>Volume:</strong> High frequency, multiple per patient</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $150K-$400K</p>
-                    </div>
-
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #f39c12;">
-                        <h4 style="color: #f39c12; font-size: 1.3em; margin-bottom: 10px;">DM21/22: Patient Lifts</h4>
-                        <p><strong>Price Range:</strong> $800-$3,500 purchase | $200-$500/mo rental</p>
-                        <p><strong>Volume:</strong> 15-25% of home care patients</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $120K-$400K</p>
-                    </div>
-
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #27ae60;">
-                        <h4 style="color: #27ae60; font-size: 1.3em; margin-bottom: 10px;">DM28/29: Oxygen Equipment</h4>
-                        <p><strong>Rental:</strong> $200-$600/month</p>
-                        <p><strong>Volume:</strong> Recurring revenue model</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $150K-$500K</p>
-                    </div>
-
-                    <div style="background: white; padding: 25px; border-radius: 10px; border-left: 5px solid #16a085;">
-                        <h4 style="color: #16a085; font-size: 1.3em; margin-bottom: 10px;">M05: Walkers & Rollators</h4>
-                        <p><strong>Price Range:</strong> $60-$400</p>
-                        <p><strong>Volume:</strong> 40-60% of discharges</p>
-                        <p style="color: #27ae60; font-weight: bold; margin-top: 10px;">Est. Annual Revenue: $80K-$300K</p>
-                    </div>
+                <div class="highlight-box">
+                    <h2>$2.8M - $5.9M</h2>
+                    <p style="font-size: 1.5em;">Консервативная Цель на 1-й Год (4 Основные Стратегии)</p>
                 </div>
+
+                <h2 style="font-size: 2.5em; margin: 40px 0 30px 0; text-align: center; color: #1e3c72;">Доходы 1-го Года по Стратегиям</h2>
+
+                <table class="revenue-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">#</th>
+                            <th style="width: 45%;">Стратегия</th>
+                            <th style="width: 22.5%;">Нижняя Оценка</th>
+                            <th style="width: 22.5%;">Верхняя Оценка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td><strong>Экстренная Больничная Доставка</strong></td><td>$560,000</td><td>$1,600,000</td></tr>
+                        <tr><td>2</td><td><strong>Программы Гольф-Клубов</strong></td><td>$280,000</td><td>$700,000</td></tr>
+                        <tr><td>3</td><td><strong>Устойчивые Медицинские Поставки</strong></td><td>$500,000</td><td>$1,000,000</td></tr>
+                        <tr><td>4</td><td><strong>Программы Аренды Оборудования</strong></td><td>$600,000</td><td>$1,100,000</td></tr>
+                        <tr><td>5</td><td><strong>Складские Шкафы для Учреждений</strong></td><td>$450,000</td><td>$1,050,000</td></tr>
+                        <tr><td>6</td><td><strong>Телемедицина и Э-Коммерция</strong></td><td>$900,000</td><td>$1,800,000</td></tr>
+                        <tr><td>7</td><td><strong>Партнерства с Аптеками</strong></td><td>$280,000</td><td>$700,000</td></tr>
+                        <tr><td>8</td><td><strong>Специализированные Подразделения</strong></td><td>$750,000</td><td>$1,500,000</td></tr>
+                        <tr><td>9</td><td><strong>Услуги по Модификации Домов</strong></td><td>$250,000</td><td>$550,000</td></tr>
+                        <tr><td>10</td><td><strong>Услуги Виртуальной Помощи</strong></td><td>$350,000</td><td>$700,000</td></tr>
+                        <tr><td>11</td><td><strong>Общие Линейки Продуктов</strong></td><td>$1,200,000</td><td>$2,300,000</td></tr>
+                        <tr class="total-row"><td colspan="2"><strong>ИТОГО (Все 11 Стратегий)</strong></td><td><strong>$6.1M</strong></td><td><strong>$13.0M</strong></td></tr>
+                        <tr style="background: #3498db; color: white; font-weight: bold;"><td colspan="2"><strong>РЕАЛИСТИЧНАЯ ЦЕЛЬ (4 Основные: 1,4,6,11)</strong></td><td><strong>$2.8M</strong></td><td><strong>$5.9M</strong></td></tr>
+                    </tbody>
+                </table>
+
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Назад</a>
             </div>
         </div>
 
-        <div class="section" style="background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; text-align: center;">
-            <h2 style="color: white; border-bottom-color: white; font-size: 3em; margin-bottom: 30px;">📊 The Bottom Line</h2>
-            
-            <div style="background: rgba(255,255,255,0.1); padding: 40px; border-radius: 15px; margin: 30px 0;">
-                <p style="font-size: 1.5em; margin-bottom: 20px;">Your 36 BOC-licensed DME categories are the FOUNDATION</p>
-                <p style="font-size: 3em; font-weight: bold; margin: 30px 0;">70-80% of Revenue</p>
-                <p style="font-size: 1.3em; margin-bottom: 30px;">Wheelchairs • Hospital Beds • Patient Lifts • Walkers • Braces • Oxygen • And More</p>
-                
-                <div style="border-top: 2px solid rgba(255,255,255,0.3); padding-top: 30px; margin-top: 30px;">
-                    <p style="font-size: 1.5em; margin-bottom: 20px;">The complementary products ENHANCE your offering</p>
-                    <p style="font-size: 3em; font-weight: bold; margin: 30px 0;">20-30% of Revenue</p>
-                    <p style="font-size: 1.3em;">Discharge Kits • On-Course Stations • Emergency Supplies • Services</p>
-                </div>
+        <!-- UZBEK -->
+        <div class="lang-content" id="content-uz">
+            <div class="header">
+                <h1>📊 DAROMAD PROGNOZLARI</h1>
+                <p style="font-size: 1.8em;">To'liq Moliyaviy Xulosa - Barcha 11 Strategiya</p>
             </div>
 
-            <div style="margin-top: 50px;">
-                <h3 style="font-size: 2.5em; margin-bottom: 20px;">Conservative Year 1 Projection</h3>
-                <p style="font-size: 5em; font-weight: bold; margin: 30px 0;">$2.8M - $5.9M</p>
-                <p style="font-size: 1.5em;">4 Core Strategies • 36 BOC Categories • Multiple Revenue Streams</p>
+            <div class="section">
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Orqaga</a>
+
+                <div class="highlight-box">
+                    <h2>$2.8M - $5.9M</h2>
+                    <p style="font-size: 1.5em;">1-Yil Konservativ Maqsad (4 Asosiy Strategiya)</p>
+                </div>
+
+                <h2 style="font-size: 2.5em; margin: 40px 0 30px 0; text-align: center; color: #1e3c72;">1-Yil Daromadlari Strategiya Bo'yicha</h2>
+
+                <table class="revenue-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">#</th>
+                            <th style="width: 45%;">Strategiya</th>
+                            <th style="width: 22.5%;">Past Baho</th>
+                            <th style="width: 22.5%;">Yuqori Baho</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td><strong>Shoshilinch Kasalxona Yetkazish</strong></td><td>$560,000</td><td>$1,600,000</td></tr>
+                        <tr><td>2</td><td><strong>Golf Klub Dasturlari</strong></td><td>$280,000</td><td>$700,000</td></tr>
+                        <tr><td>3</td><td><strong>Chidamli Tibbiy Ta'minot</strong></td><td>$500,000</td><td>$1,000,000</td></tr>
+                        <tr><td>4</td><td><strong>Uskuna Ijara Dasturlari</strong></td><td>$600,000</td><td>$1,100,000</td></tr>
+                        <tr><td>5</td><td><strong>Muassasalar Saqlash Shkaflar</strong></td><td>$450,000</td><td>$1,050,000</td></tr>
+                        <tr><td>6</td><td><strong>Teletibbiyot va E-Tijorat</strong></td><td>$900,000</td><td>$1,800,000</td></tr>
+                        <tr><td>7</td><td><strong>Dorixonalar bilan Hamkorlik</strong></td><td>$280,000</td><td>$700,000</td></tr>
+                        <tr><td>8</td><td><strong>Maxsus Bo'limlar</strong></td><td>$750,000</td><td>$1,500,000</td></tr>
+                        <tr><td>9</td><td><strong>Uy Modifikatsiya Xizmatlari</strong></td><td>$250,000</td><td>$550,000</td></tr>
+                        <tr><td>10</td><td><strong>Virtual Tibbiy Xizmatlar</strong></td><td>$350,000</td><td>$700,000</td></tr>
+                        <tr><td>11</td><td><strong>Umumiy Mahsulot Liniyalari</strong></td><td>$1,200,000</td><td>$2,300,000</td></tr>
+                        <tr class="total-row"><td colspan="2"><strong>JAMI (Barcha 11 Strategiya)</strong></td><td><strong>$6.1M</strong></td><td><strong>$13.0M</strong></td></tr>
+                        <tr style="background: #3498db; color: white; font-weight: bold;"><td colspan="2"><strong>HAQIQIY MAQSAD (4 Asosiy: 1,4,6,11)</strong></td><td><strong>$2.8M</strong></td><td><strong>$5.9M</strong></td></tr>
+                    </tbody>
+                </table>
+
+                <a href="https://holisticmedicalsupply.github.io/holisticmedicalsupply-scratchpad4/" class="back-link">← Orqaga</a>
             </div>
         </div>
     </div>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.lang-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('content-' + lang).classList.add('active');
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            localStorage.setItem('preferred-language', lang);
+            window.scrollTo(0, 0);
+        }
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && ['en', 'ru', 'uz'].includes(savedLang)) switchLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
